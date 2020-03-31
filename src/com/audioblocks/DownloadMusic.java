@@ -15,6 +15,7 @@ public class DownloadMusic{
 	private final static String LOGIN_URL = "https://www.audioblocks.com/login";
 	private final static String MUSIC_TAG_URL = "https://www.audioblocks.com/royalty-free-audio/music/love";
 	
+	private final static String btnChat = "//*[@id=\"intercom-container\"]";
 	private final static String inputEmailXPath = "//*[@id=\"email\"]";
 	private final static String inputPasswordXPath = "//*[@id=\"password\"]";
 	private final static String btnSubmit = "//*[@id=\"login-form\"]/p/button";
@@ -24,7 +25,7 @@ public class DownloadMusic{
 	private final static String PASSWORD = "Anhduc12";
 	
 	private final static int maxPageItems = 36;
-	private static int sectionIndex = 35;
+	private static int sectionIndex = 0;
 	
 	public static String getSectionIndex() {
 		sectionIndex+=1;
@@ -59,6 +60,9 @@ public class DownloadMusic{
 		
 		driver.manage().window().maximize();
 		
+		waitForElementVisible(driver, btnChat);
+		removeAttributeOfElement(driver, btnChat);
+		
 		while(true) {
 			String currentSection = getSectionIndex();
 			System.out.println("currentSection "+currentSection);
@@ -71,10 +75,7 @@ public class DownloadMusic{
 			moveToElement(driver, currentSection);
 			System.out.println("Download section "+sectionIndex);
 		}
-	}
-	
-	
-	
+	}	
 	
 	public static void waitForElementVisible(WebDriver driver, String locator) {
 		By by = By.xpath(locator);
