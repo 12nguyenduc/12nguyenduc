@@ -15,7 +15,6 @@ public class DownloadMusic{
 	private final static String LOGIN_URL = "https://www.audioblocks.com/login";
 	private final static String MUSIC_TAG_URL = "https://www.audioblocks.com/royalty-free-audio/music/love";
 	
-	private final static String btnChat = "//*[@id=\"intercom-container\"]/div/iframe";
 	private final static String inputEmailXPath = "//*[@id=\"email\"]";
 	private final static String inputPasswordXPath = "//*[@id=\"password\"]";
 	private final static String btnSubmit = "//*[@id=\"login-form\"]/p/button";
@@ -69,9 +68,7 @@ public class DownloadMusic{
 				waitForElementInvisible(driver, btnLoadMore);
 			}
 			waitForElementVisible(driver, currentSection);
-			WebDriverWait wait = new WebDriverWait(driver, 30);
-			wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(currentSection))));
-			driver.findElement(By.xpath(currentSection)).click();
+			moveToElement(driver, currentSection);
 			System.out.println("Download section "+sectionIndex);
 		}
 	}
