@@ -34,18 +34,18 @@ public class DownloadMusic{
 	
 	public static void main(String[] args) {
 		
-		if(System.getProperty("os").startsWith("Windows")) {
+		if(System.getProperty("os.name").startsWith("Windows")) {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
-		}else if(System.getProperty("os").startsWith("Mac")){
+		}else if(System.getProperty("os.name").startsWith("Mac")){
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		}else {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver_linux");
 		}	
 
-//	    WebDriver driver = new ChromeDriver();
-//	    
-//	    login(driver);
-//	    downloadMusic(driver);
+	    WebDriver driver = new ChromeDriver();
+	    
+	    login(driver);
+	    downloadMusic(driver);
 	    
 //	    driver.quit();
 	}
